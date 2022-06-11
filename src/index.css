@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    outline: none;
+  }
+  body {
+    color: #ffffffaa;
+    @apply bg-primary;
+  }
+  ::selection {
+    background: none;
+  }
+  input::selection {
+    @apply bg-darker;
+  }
+
+  /* scrollbar width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  /* scrollbar Track */
+  ::-webkit-scrollbar-track {
+    display: none;
+  }
+  /* scrollbar Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff99; /* fallback for old browsers */
+    border-radius: 10px;
+  }
+  /* scrollbar Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff99;
+  }
+}
+
+@layer components {
+  .background-wiggle-image {
+    @apply opacity-50;
+    animation: wiggle 2s linear infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
