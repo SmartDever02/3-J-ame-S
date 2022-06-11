@@ -1,17 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Layout from './components/layout/layout';
-import SpellChecker from './pages/spellchecker/SpellChecker';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from 'react-router-dom';
+import ShowCases from './views/ShowCases';
+//@ts-ignore
+import AnimationBoy from './views/AnimationBoy';
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<SpellChecker />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<ShowCases />} />
+        <Route path='/animationboy' element={<AnimationBoy />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
