@@ -1,27 +1,12 @@
-import { lerp } from 'three/src/math/MathUtils';
 import React, { Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import Model from './Model';
-
-function Rig() {
-  return useFrame((state) => {
-    state.camera.position.x = lerp(
-      state.camera.position.x,
-      1 + state.mouse.x / 4,
-      0.075
-    );
-    state.camera.position.y = lerp(
-      state.camera.position.y,
-      1.5 + state.mouse.y / 4,
-      0.075
-    );
-  });
-}
 
 export default function AnimationBoy() {
   return (
     <div className='ANIMATION-BOY h-screen'>
-      <Canvas mode='concurrent' camera={{ position: [1, 1.5, 2.5], fov: 50 }}>
+      <Canvas mode='concurrent' camera={{ position: [1, 1.5, 3.5], fov: 50 }}>
         <ambientLight />
         <directionalLight
           position={[-5, 5, 5]}
@@ -30,7 +15,7 @@ export default function AnimationBoy() {
           shadow-mapSize-height={1024}
         />
         <group position={[0, -1, 0]}>
-          <Suspense fallback={null}>
+          <Suspense fallback={'loading'}>
             <Model />
           </Suspense>
         </group>
@@ -42,7 +27,7 @@ export default function AnimationBoy() {
           <planeBufferGeometry args={[10, 10, 1, 1]} />
           <shadowMaterial transparent opacity={0.2} />
         </mesh>
-        <Rig />
+        <OrbitControls />
       </Canvas>
     </div>
   );
